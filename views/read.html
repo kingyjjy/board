@@ -4,8 +4,13 @@
 
 <h1 class="text-center mb-5">{{title}}</h1>
 <div class="row flex-column view">
-    <div class="title py-3 pl-2">
+    <div class="title py-3 pl-2 d-flex justify-content-between">
         제목을 이곳에
+        <div>
+            <a href="/" class="btn btn-secondary px-3 mr-3">댓 글</a>
+            <a href="/edit" class="btn btn-primary px-3 "><i class="ri-edit-line"></i> 수 정</a>
+        </div>
+        
     </div>
 </div>
 <div class="row view_info py-3">
@@ -43,10 +48,8 @@
         역사를 살 얼마나 귀는 그러므로 부패뿐이다.
     </p>
 </div>
-<div class="row justify-content-end mb-5">
+<div class="row justify-content-center mb-5">
     <a href="/" class="btn btn-secondary px-3 mr-3">목 록</a>
-    <a href="/" class="btn btn-secondary px-3 mr-3">댓 글</a>
-    <a href="/edit" class="btn btn-primary px-3 mr-3"><i class="ri-edit-line"></i> 수 정</a>
     <button type="button" data-target="#delModal" data-toggle="modal" class="btn btn-danger px-3"><i class="ri-delete-bin-line"></i> 삭 제</button>
 </div>  
 <div class="modal fade" role="dialog" id="delModal" tabindex="-1" aria-labelledby="delModalLabel" aria-hidden="true">
