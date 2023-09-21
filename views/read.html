@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h1 class="text-center mb-5">{{title}}</h1>
+<div class="row flex-column view">
+    <div class="title py-3 pl-2">
+        제목을 이곳에
+    </div>
+</div>
+<div class="row view_info py-3">
+    <div class="col-8 d-flex">
+        <div class="date pr-5">2023.09.21</div>
+        <div class="writer pr-5">홍길동</div>
+        <div class="hit">hit : 23</div>
+    </div>
+    <div class="col-4 sns text-right">     
+        <a href="#" class="mr-3"><i class="ri-facebook-circle-line"></i></a>
+        <a href="#" class="mr-3"><i class="ri-instagram-line"></i></a>
+        <a href="#" class="mr-3"><i class="ri-kakao-talk-line"></i></a>
+        <a href="#" ><i class="ri-youtube-line"></i></a>
+    </div>
+</div>
+<div class="content py-5">
+    <p>
+        가는 이 것은 보는 위하여 노래하며 옷을 있으랴? 인생의 하였으며, 
+        대한 것이다. 아니한 싹이 따뜻한 온갖 우리 앞이 것이다. 
+        군영과 풍부하게 설레는 천하를 이것이다. 오아이스도 눈이 영락과 봄바람이다.
+        우리의 그들에게 가지에 인생의 풀이 구하지 만물은 트고, 교향악이다. 
+        없으면 보는 청춘은 되려니와, 얼음이 공자는 인간이 소담스러운 있으랴? 
+        풍부하게 희망의 그것은 없는 청춘의 품고 이 우리 싹이 봄바람이다. 
+        인생을 이 밝은 있는 되는 끝에 아니한 있는가? 봄바람을 품었기 따뜻한 
+        역사를 살 얼마나 귀는 그러므로 부패뿐이다.
+    </p>
+    <p>
+        가는 이 것은 보는 위하여 노래하며 옷을 있으랴? 인생의 하였으며, 
+        대한 것이다. 아니한 싹이 따뜻한 온갖 우리 앞이 것이다. 
+        군영과 풍부하게 설레는 천하를 이것이다. 오아이스도 눈이 영락과 봄바람이다.
+        우리의 그들에게 가지에 인생의 풀이 구하지 만물은 트고, 교향악이다. 
+        없으면 보는 청춘은 되려니와, 얼음이 공자는 인간이 소담스러운 있으랴? 
+        풍부하게 희망의 그것은 없는 청춘의 품고 이 우리 싹이 봄바람이다. 
+        인생을 이 밝은 있는 되는 끝에 아니한 있는가? 봄바람을 품었기 따뜻한 
+        역사를 살 얼마나 귀는 그러므로 부패뿐이다.
+    </p>
+</div>
+<div class="row justify-content-end mb-5">
+    <a href="/" class="btn btn-secondary px-3 mr-3">목 록</a>
+    <a href="/" class="btn btn-secondary px-3 mr-3">댓 글</a>
+    <a href="/edit" class="btn btn-primary px-3 mr-3"><i class="ri-edit-line"></i> 수 정</a>
+    <button type="button" data-target="#delModal" data-toggle="modal" class="btn btn-danger px-3"><i class="ri-delete-bin-line"></i> 삭 제</button>
+</div>  
+<div class="modal fade" role="dialog" id="delModal" tabindex="-1" aria-labelledby="delModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger">삭제</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="close"><i class="ri-close-line"></i></button>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <p>삭제 하려면 비밀번호를 입력하세요</p>
+                    
+                        <input type="password" class="form-control" placeholder="비밀번호">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                    <button type="button" class="btn btn-danger">삭제하기</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>          
+        
+        
+    
+
+{%endblock%}

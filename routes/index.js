@@ -9,5 +9,8 @@ router.get('/',(req,res)=>{
 router.get('/write',(req,res)=>{ //글쓰기 
     res.render('write', {title:"게시판 글쓰기"});
 });
+router.get('/read',(req,res)=>{
+    res.render('read',{title:"글 상세보기"});
+})
 
 module.exports = router; //router내보내기
