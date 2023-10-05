@@ -25,9 +25,14 @@
             {% for rs in row %}
             <tr>
                 <td class="text-center">{{rs.num}}</td>
-                <td class="title"><a href="/read">{{rs.title}}</a></td>
+                <td class="title">
+                    {% if rs.grLayer %}
+                    <img src="images/blank.png" width="{{rs.grLayer}}">
+                    <i class='ri-corner-down-right-line'></i>
+                    {%endif%}
+                    <a href="/read/{{rs.num}}">{{rs.title}}</a></td>
                 <td class="text-center">{{rs.writer}}</td>
-                <td class="text-center">{{rs.nowdate}}</td>
+                <td class="text-center">{{rs.wdate}}</td>
                 <td class="text-center">{{rs.hit}}</td>
             </tr>
             {% endfor %}

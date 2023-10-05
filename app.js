@@ -13,6 +13,7 @@ app.set('port', process.env.PORT || 8080); //.env안에 포트번호 가져옴 �
 app.set('view engine', 'html');//넌적스에서 읽을 값 어떤 확장자 쓸것인가?? 우린 html
 nunjucks.configure('views', {
     express: app,
+    autoescape:true, //false 일 경우 html태그 허용, true불가
     watch:true //html 변경 바로 읽어드림
 });//nunjucks 초기화 세팅 / views폴더에 있는값 읽어올거야
 
