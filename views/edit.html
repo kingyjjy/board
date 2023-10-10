@@ -6,7 +6,7 @@
 {% block content %}
 
 <h1 class="text-center mb-5">{{title}}</h1>
-<form name="write_form" method="post" class="row was-validated">
+<form name="write_form" method="post" id="write_form" class="row was-validated" >
     <!-- 이름, 비번, 히든으로 아이디, 제목, 내용, 파일전송(기능추가때) -->
     <div class="col-md-6 my-3">
         <div class="row align-items-center">
@@ -16,12 +16,15 @@
     </div>
     <div class="col-md-6 row align-items-center my-3">
         <label class="col-2" for="pass">비밀번호</label>
-        <div class="col-10"><input type="password" name="pass" class="form-control"  placeholder="비밀번호" id="pass" required /></div>
+        <div class="col-10">
+            <input type="password" name="pass" class="form-control"  placeholder="비밀번호" id="pass"  />
+        </div>
+
     </div>
     <div class="col-md-12 row align-items-center my-3">
         <label for="title" class="col-md-1">제목</label>
         <div class="col-md-11">
-            <input type="text" name="title" class="form-control" value="{{row[0].title}}" placeholder="제목" required />
+            <input type="text" id="title" name="title" class="form-control" value="{{row[0].title}}" placeholder="제목" required />
         </div>
     </div>
     <div class="col-md-12 row align-items-center my-3">
@@ -32,10 +35,11 @@
     </div>
     <div class="col-md-12 text-center my-3">
         <button type="reset" class="btn btn-danger mr-3"> 취 소 </button>
-        <button type="submit" class="btn btn-secondary ml-3"> 전 송 </button>
+        <button type="button" id="submit" class="btn btn-secondary ml-3" > 전 송 </button>
         <a href="/" class="btn btn-secondary ml-5"> 목록으로 </a>
     </div>
     <input type="hidden" name="userid" value="{{userid}}" />
+    <input type="hidden" id="num" value="{{row[0].num}}" name="num">
 </form>
 
 {% endblock %}
@@ -50,6 +54,25 @@
             height:300,
             lang:"ko-KR"
         });
+        
+    });
+
+    $('#submit').click(function(){
+        const forms = $('#write_form').serialize();
+
+        $.ajax({
+            url:'/pwdlogin',
+            type:'post',
+            data:forms,
+            success:function(data){
+                if(data >0){
+                    alert('검증성공');
+                }else{
+                    alert('비밀번호 검증 실패');
+                    return;
+                }
+            }
+        })
     });
 </script>
 {% endblock %}

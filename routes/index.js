@@ -96,7 +96,7 @@ router.post('/edit/:num',(req,res)=>{//글 수정한거 보내기
     conn.query(sql,[{
         title:rs.title,
         contents:rs.content
-    }, num],(err,row,fields)=>{
+    }, num],(err,res,fields)=>{
         if(err)
             console.log(err);
         else{
@@ -105,5 +105,31 @@ router.post('/edit/:num',(req,res)=>{//글 수정한거 보내기
     });
     res.redirect('/read/'+num);
 });
+router.post('/pwdlogin', (req,res)=>{
+    const {num, pass, title, content } = req.body;
+    let sql = "select * from ndboard where num=? and userpass = ?";
+    conn.query(sql,[num, pass],(err,row,fields)=>{
+        if(err){
+            console.log(err);
+        }else{
+            if(row.length > 0){
+                sql = "update ndboard set ? where num = ?";
+                conn.query(sql,[{
+                    title:title,
+                    contents:content
+                }, num],(err,res,fields)=>{
+                    if(err)
+                        console.log(err);
+                    else{
+                        return(res.write(1));
+                    }
+                });
+
+            }else{
+               return(res.write(0));
+            }
+        }
+    });
+})
 
 module.exports = router; //router내보내기
