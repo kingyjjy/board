@@ -117,19 +117,51 @@ router.post('/pwdlogin', (req,res)=>{
                 conn.query(sql,[{
                     title:title,
                     contents:content
-                }, num],(err,res,fields)=>{
-                    if(err)
+                }, num],(err,fields)=>{
+                    if(err){
+                        res.send('0');
                         console.log(err);
-                    else{
-                        return(res.write(1));
+                    }else{
+                        res.send('1');
+                        console.log('수정성공');
                     }
                 });
 
             }else{
-               return(res.write(0));
+               res.send('0');
             }
         }
     });
+});
+router.get('/delete/:num',(req,res)=>{
+    //const {num}=req.params;
+    const {num,pass} = req.body;
+    let sql = "select * from ndboard where num=? and userpass = ?";
+    conn.query(sql,[num, pass],(err,row,fields)=>{
+        if(err){
+            console.log(err);
+        }else{
+            if(row.length > 0){
+                sql = "delete from ndboard where num = ?";
+                conn.query(sql,[{
+                    title:title,
+                    contents:content
+                }, num],(err,fields)=>{
+                    if(err){
+                        res.send('0');
+                        console.log(err);
+                    }else{
+                        res.send('1');
+                        console.log('삭제성공');
+                    }
+                });
+
+            }else{
+               res.send('0');
+            }
+        }
+    });
+   
 })
 
 module.exports = router; //router내보내기

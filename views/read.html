@@ -63,12 +63,33 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-                    <button type="button" class="btn btn-danger">삭제하기</button>
+                    <button type="button" id="delete-btn" class="btn btn-danger">삭제하기</button>
                 </div>
+                <input type="hidden" id="num" value="{{row[0].num}}" name="num">
             </form>
         </div>
     </div>
 </div>          
     
+
+<script>
+    $('#delete-btn').click(function(){
+       const modal = $('#delModal').serialize();
+        $.ajax({
+            url:'/delete/:num',
+            type:'get',
+            data:modal,
+            success:function(data){
+                if(data >0){
+                    alert('검증성공');
+                    location.href='/';
+                }else{
+                    alert('비밀번호 검증 실패');
+                    return;
+                }
+            }
+        })
+    });
+</script>
 
 {%endblock%}
